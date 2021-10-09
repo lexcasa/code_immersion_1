@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// EJEMPLO: Promedio de edad de los alumnos que tenemos en clase
+		// Lista de alumnos
+		// [18,29,31,32]
+		// Prom: sumo todos los elementos y divido por la cantidad de elementos
+		// Como recorro la lista
+		// FOR: Indicie, condicion de corte, step 
+		// 
+		let alumnos = [18,29,31,32]
+		// Arrays: (0,1, ... , n-1) Donde n es la cantidad de elementos del array
+		// n = alumnos.length 
+		// i < alumnos.length 0, ... , n-1
+		// i = i + 1 
+		// i++
+		// alumnos[0] -> 18
+		// alumnos[1] -> 29
+		// ..
+		// alumnos[3] -> 32
+		// alumnos[i] -> ?? dependiendo de cuanto vale i
+		// Ref: https://www.w3schools.com/jsref/jsref_statements.asp
+
+		let sumEdades = 0 // Notacion camelCase 
+					      // Notacion snake: snake_notation
+		let prom 	  = 0
+		for(let i = 0; i < alumnos.length; i++){
+			console.log("edad: ", alumnos[i])
+			sumEdades = sumEdades + alumnos[i]
+			// sumEdades += alumnos[i]
+		}
+		console.log("sumEdades: ", sumEdades)
+		prom = sumEdades / alumnos.length
+		console.log("promedio: ", prom)
+	</script>
+</body>
+</html>

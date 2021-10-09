@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// EJEMPLO: Una persona quiere viajar de A a B en America Latina
+		// COND1: Ser mayor de edad
+		// COND2: PCR Negativo
+		// COND3: Tener Cedula o Pasaporte
+		const MAYOR_EDAD = 18
+		let edad = 29
+		let pcr  = false // SI: true, NO: false
+		
+		let cedula = true
+		let pasaporte = false
+
+		let condMayorEdad 	= edad >= MAYOR_EDAD // true
+		let condPcrNegativo = pcr // true
+		let condCiOPass 	= cedula || pasaporte // OR: || 
+
+		if(condMayorEdad == true && condPcrNegativo == false && condCiOPass == true){
+			console.log("PUEDE VIAJAR")
+		} else {
+			console.log("NO PUEDE VIAJAR")
+		}
+
+	</script>
+</body>
+</html>

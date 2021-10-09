@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// EJEMPLO: Encontrar el promedio de edades de los alumnos que son mayor de edad
+		// 
+		let alumnos = [12,15,23,40,32,10]
+		const MAYOR_EDAD = 18
+
+		let sumEdades = 0
+		let cont 	  = 0
+
+		for (let i = 0; i < alumnos.length; i++){
+			if(alumnos[i] >= MAYOR_EDAD){
+				sumEdades += alumnos[i]
+				cont++
+			}
+		}
+		let prom = sumEdades / cont
+		console.log("promedio: ", prom)
+	</script>
+</body>
+</html>

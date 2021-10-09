@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Arrays y objetos
+		let edades = [10, 14, 20, 30]
+		// Objetos
+		
+		// EJEMPLO: Dado un sistema de registro de personal
+		// Una persona se define por: nombre, edad, documento
+		let persona = {
+			nombre: "Alex",
+			edad: 29,
+			documento: 123213
+		}
+
+		// Obtner el nombre
+		console.log(persona.nombre)
+		// Obtener la edad
+		console.log(persona.edad)
+		// Obtener documento
+		console.log(persona.documento)
+
+		// PERSONAS
+		let personas = [
+			{
+				nombre: "",
+				edad: 29,
+				documento: 123213
+			},
+			{
+				nombre: "Juan",
+				edad: 22,
+				documento: 123213
+			}
+		]
+		console.log("personas: ", personas[0].edad)
+
+		for (let i = 0; i < personas.length; i++){
+			console.log("edad: ", personas[i].edad)
+		}
+
+		let persona2    = {
+			nombre: 'Alex',
+			edad: 29,
+			documento: 123213
+		}
+
+		let checkSchema = function (obj){
+			let fieldCount = 0
+			// Schema: 
+			let fields = ['nombre','edad','documento']
+
+			// Recorro el objeto que tengo
+			for (let field in obj){
+				// Verifico si corresponde al esquema
+				if(fields.includes(field)){
+					// Cuento si la cantidad de propiedades del objeto es igual 
+					// A la cantidad de propiedades soportadas en el esquema
+					fieldCount++
+				}
+			}
+
+			if(fieldCount == fields.length){
+				return true
+			} else {
+				return false
+			}
+		}
+
+	</script>
+</body>
+</html>

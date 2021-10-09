@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// EJEMPLO: Una persona puede viajar de un pais A a B 
+		// Si cumple con las siguientes condiciones
+		// COND 1: Mayor de edad
+		// COND 2: PCR Negativo
+		// OUTPUT: PUEDE VIAJAR, NO PUEDE VIAJAR
+		const MAYOR_EDAD = 18
+		// RESOLV:
+		// Mayor de edad va a ser un numero
+		// PCR Negativo va a ser un true/false
+		let edad = 29
+		let pcr  = false // SI: true, NO: false
+
+		let condMayorEdad 	= edad >= MAYOR_EDAD // true
+		let condPcrNegativo = pcr // true
+
+		// COND TOTAL: condMayorEdad == true Y condPcrNegativo == false
+		// AND: && compara valores booleanos
+		// 
+		if(condMayorEdad == true && condPcrNegativo == false){
+			console.log("PUEDE VIAJAR")
+		} else {
+			console.log("NO PUEDE VIAJAR")
+		}
+
+	</script>
+</body>
+</html>
