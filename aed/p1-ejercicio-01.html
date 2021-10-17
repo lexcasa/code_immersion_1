@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let input =  [1, 2, 3, "A", "A", "B", 2, 2]
+		let out   = []
+
+		// arrAux: [2,2,2,"A","A"]
+		// out: [2,"A"]
+
+		let arrAux = []
+		for (let i = 0; i < input.length; i++){
+			let count = 0
+			for (let j = 0; j < input.length; j++){
+				if(input[i] == input[j]){
+					count++
+				}
+			}
+			if(count > 1){
+				arrAux.push(input[i])
+			}
+		}
+
+		for (let i = 0; i < arrAux.length; i++){
+			if(!out.includes(arrAux[i])){
+				out.push(arrAux[i])
+			}
+		}
+		console.log("arrAux: ", arrAux, out)
+	</script>
+</body>
+</html>

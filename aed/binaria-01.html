@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let arrNumeros = [150,1,5,22,30,200,50]
+		let count = 0
+		let element  = 150
+
+		const findBiparticion = function (arr, flag){
+			let min = 0
+			let max = arr.length -1
+
+			if(arr[min] == flag){
+				return min
+			} else if (arr[max] == flag){
+				return max
+			}
+
+			while(min <= max){
+				count++
+
+				let mid = Math.floor((min + max)/2)
+				let guess = arr[mid]
+
+				if(guess == flag){
+					return mid
+				}
+
+				if(guess > flag){
+					max = mid - 1
+				} else {
+					min = mid + 1
+				}
+				arrNumeros.splice(mid, 1)
+			}
+			console.log("arrNumeros: ", arrNumeros)
+			return -1
+		}
+
+		let res = findBiparticion(arrNumeros, element)
+		
+		while (res == -1 && arrNumeros.length > 0){
+			res = findBiparticion(arrNumeros, element)
+			console.log("res:: ", res)
+		}
+
+		console.log("veces: ", count)
+
+	</script>
+</body>
+</html>

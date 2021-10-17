@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Proteccion de la funcion para no redefinir
+		const sumatoria = function (arr1, arr2) {
+			if(typeof arr1 == 'object' && typeof arr1 == typeof arr2){
+				if(arr1.length === arr2.length){
+					let sumTotal = 0
+					for(let i = 0; i < arr1.length; i++){
+						let preSuma = arr1[i] + arr2[i]
+
+						if(isNaN(preSuma)){
+							sumTotal = false
+							break;
+						}
+						
+						sumTotal += preSuma
+					}
+					return sumTotal === false ? {error: "Hay un elemento que no es array"} : sumTotal
+				}
+				return {error: "Largos distintos"}
+			}
+			return {error: "Solo soporta arrays"}
+		}
+		// Casos de pruebas
+		// Casos evidentes
+		// 	1. Que los arrays tengan largos iguales    -> Output por lo menos 0
+		//  2. Que los arrays tengan largos diferentes -> Output false
+		// Corner cases
+		//  1. Que pasa si entran elementos que no son arrays
+		// 		-> La caracteristica de un array
+		// Border cases
+		// 	1. Tengo elementos parecidos a array pero no lo son
+		// 	{length: "a"}
+		// 	{length: 2} -> Reforzar la funcion con respecto a fallos
+		//  {'0':1, length: 2}
+	</script>
+</body>
+</html>
