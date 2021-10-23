@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		const bubbleSort = inputArr => {
+			for (let i = 0; i < inputArr.length; i++){
+				for (let j = 0; j < inputArr.length; j++){
+					if(inputArr[j] > inputArr[j+1]){
+						let tmp = inputArr[j]
+						inputArr[j] = inputArr[j+1]
+						inputArr[j+1] = tmp
+					}
+				}
+				console.log(inputArr)
+			}
+			return inputArr
+		}		
+
+		let arr  = [null, "", 1, 2]
+		let arr2 = arr.filter(item => item)
+	</script>
+</body>
+</html>

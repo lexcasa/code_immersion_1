@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// Primera parte resolver popt
+
+		const R = [1, 22, 3]
+		const C = [0.2, 25, 20]
+
+		const pOpt = (ram, cpu, t) => {
+			if(ram.length === cpu.length){
+				let res = 0
+				for (let i = 0; i < ram.length; i++){
+					res += ram[i] * cpu[i] * t
+				}
+				return res
+			}
+			return 0
+		}
+
+		const K = 5000
+		const tiempo = 10
+
+		let totOpt = 0
+		for (let t = 0; t <= tiempo; t++){
+			totOpt += pOpt(R,C,t)
+			
+			if(totOpt > K){
+				console.log("supera: ", totOpt, t)
+				break
+			} else {
+				console.log("totOpt: ", totOpt)
+			}
+		}
+	</script>
+</body>
+</html>

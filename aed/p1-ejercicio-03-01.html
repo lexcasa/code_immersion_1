@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- 
+		Input: [“Aba”,”AAb”,"a","aab", ”b”,”B”] Output: [“Aba”,”AAb”,"a","aa"] 
+		Out: ["ABA","AAB", ...]
+		flag: "A"
+	-->
+	<script type="text/javascript">
+		const flag  = "A"
+		const input = ["Aba","AAb","a","aa","b","B"]
+		let out = []
+
+		// For lineal
+		input.map( item => {
+			// Verifico si flag esta dentro de c/uno de los elementos 
+			// del input
+			//
+			let itemNormal = item.toUpperCase()
+			if(itemNormal.includes( flag.toUpperCase() )){
+				out.push(item)
+			}
+		})
+
+		console.log("output: ", out)
+
+	</script>
+</body>
+</html>
