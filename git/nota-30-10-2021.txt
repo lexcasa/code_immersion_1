@@ -71,3 +71,9 @@ GIT FLOW
 		si la rama no existe en el remoto
 		-> git push -u origin [nombre-rama]
 
+EJERCICIO RAPIDO:
+	-> Crear una rama con el nombre: ejemplo/MiNombre
+	-> Creo un archivo
+	-> Subo el archivo y la rama al repositorio
+	-> Crear una pull request contra develop
+
