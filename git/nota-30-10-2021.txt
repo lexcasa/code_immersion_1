@@ -66,3 +66,8 @@ GIT FLOW
 	-> Agregar el codigo que quiero comprometerme
 	-> Commit
 
+	-> Creamos las ramas a traves del comando
+		git checkout -b [nombre-rama]
+		si la rama no existe en el remoto
+		-> git push -u origin [nombre-rama]
+
