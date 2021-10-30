@@ -1,0 +1,68 @@
+GIT
+
+-> Pre requisito
+	-> Crear cuenta en github
+	-> Instalar git for windows
+	-> Si tenemos mac, linux ya viene instaldo
+
+
+1. Saber clonar un repositorio
+	-> git clone URL [nombre-carpeta]
+
+CONCEPTO GLOBAL
+	-> Linea de tiempo
+		0 ----- i ----- version final
+	-> Cada linea de tiempo se mide en ramas
+
+		Linea de tiempo del codigo principal
+		N-lineas de tiempo con ese codigo
+	
+
+GIT FLOW
+	REMOTO / LOCAL
+	-> Se basa en el proceso de desarrollo real de software
+		-> tres ramas: 
+			-> master (o main) -> Produccion
+			-> test (o qa) -> QA / pre-prod
+			-> develop -> desarrollo
+		
+	-> develop es la rama donde los devs envian sus commits 15
+	-> test grabar en test a traves de un hito (grabo con un merge) 16
+	-> master grabar en master hitos estables de test 17
+
+	-> feature branch, hotfix branch
+		-> feature branch: desarrollo de funcionalidad
+		-> hotfix branch: Error o bug
+	
+	-> develop -> creo una rama (hotfix) -> hotfix/error-boton-login -> cuando esta pronto -> PR a develop
+	-> Si todo esta OK
+		-> hotfix/error-boton-login hace parte de develop (a traves del merge)
+
+	EJEMPLO: 
+
+		- Si tengo que desarrollar un login de usuario
+		-> Creo una rama a partir de develop de tipo feature branch
+			-> feature/login-usuario
+			-> Quiero pasar lo que hice a develop
+			-> Genero una pull request en github
+				-> hace la peticion de merge de mi rama a la rama principal (develop)
+				-> Si esta en condiciones se adhiere a la rama principal
+
+		- Si tenemos que resolver un error o bug que reportaron de test por esa feature nueva
+		-> Creamos una rama a partir de develop
+			-> hotfix/login-usuario-<ticket>
+			-> Quiero pasar lo que hice a develop
+			-> Genero una pull request en github
+				-> hace la peticion de merge de mi rama a la rama principal (develop)
+				-> Si esta en condiciones se adhiere a la rama principal
+	
+	-> Commit:
+		-> Usuario
+		-> Que hice
+		-> Fecha y hora
+		-> Tramo de codigo
+		-> hash
+	
+	-> Agregar el codigo que quiero comprometerme
+	-> Commit
+
