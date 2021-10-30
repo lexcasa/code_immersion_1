@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let arr = ["Aba", "Abb", "B", "b"]
+		let auxArr 		= arr.map(item => item.toUpperCase())
+		let arrSorted 	= arr.sort()
+		arrSorted.sort((a,b) => a.length - b.length)
+
+		console.log("arrAux: ", arrSorted)
+	</script>
+</body>
+</html>
