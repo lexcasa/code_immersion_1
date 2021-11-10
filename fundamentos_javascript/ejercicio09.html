@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <img id="imagen" width="120">
+        <!-- { img: 
+                {
+                    id: "imagen", 
+                    src: ""
+                }
+            } -->
+        <hr>
+        <button onclick="verImagen()">Ver otra imagen!</button>
+        <script>
+            const imagenes = [
+                'https://www.nationalgeographic.com.es/medio/2018/02/27/playa-de-isuntza-lekeitio__1280x720.jpg',
+                'https://kaikucaffelatte.com/blog/wp-content/uploads/2020/03/shutterstock_510679489-scaled.jpg',
+                'https://www.blogdelfotografo.com/wp-content/uploads/2020/04/fotografo-paisajes.jpg',
+                'https://astelus.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada.jpg'
+            ]
+            let imagen = document.querySelector('#imagen')
+            
+            const verImagen = function (){
+                let rand = Math.floor(Math.random() * imagenes.length)
+                imagen.src = imagenes[rand]
+            }
+        </script>
+    </body>
+</html>

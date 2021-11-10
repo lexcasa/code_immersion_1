@@ -1,0 +1,35 @@
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tbody></tbody>
+        </table>
+        <div></div>
+        <script>
+            const persona = {
+                nombre: "Alex",
+                apellido: "Casadevall"
+            }
+
+            const render = function (obj, childTag, fatherTag){
+                let childTpl  = ``
+               
+                for(let key in obj){
+                    // Entra un b
+                    childTpl += `
+                        <${childTag}>${obj[key]}</${childTag}>
+                    `
+                    // <${childTag}>${obj[key]}</${childTag}> ~ <b>Alex</b>
+                    // <${childTag}>${obj[key]}</${childTag}> ~ <b>Casadevall</b>
+                }
+
+                let fatherTpl = `<${fatherTag}>${childTpl}</${fatherTag}>`
+                return fatherTpl
+            }
+
+            document.querySelector('tbody').innerHTML = render(persona, 'td', 'tr')
+            document.querySelector('div').innerHTML = render(persona, 'span', 'div')
+
+        </script>
+    </body>
+</html>
