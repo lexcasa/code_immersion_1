@@ -1,0 +1,43 @@
+<html>
+    <head></head>
+    <body>
+        <!-- 
+            Dar click en un ítem de producto y cargar el nombre en un input type="text"
+            Dar click en "agregar" y carga el item en un div resultado dentro de en una etiqueta <p>
+         -->
+        <ul></ul>
+        <hr>
+        <input type="text" id="producto">
+        <button onclick="agregarItem()">Agregar</button>
+        <hr>
+        <div id="resultado"></div>
+        <script>
+            const productos  = ["Manzana","Pera","Ajo"]
+            let resultado    = document.querySelector('#resultado')
+            let contProducto = document.querySelector('#producto')
+
+            let ul = document.querySelector('ul')
+            let li = ``
+            
+            const muestraTexto = function (texto){
+                contProducto.value = texto
+            }
+
+            const agregarItem = function (){
+                let producto = contProducto.value
+
+                resultado.innerHTML += `
+                    <p>${producto}</p>
+                `
+            }
+
+            for(let i = 0; i < productos.length; i++){
+                let producto = productos[i]
+                li += `
+                    <li onclick="muestraTexto('${producto}')">${producto}</li>
+                `
+            }
+            ul.innerHTML = li
+        </script>
+    </body>
+</html>

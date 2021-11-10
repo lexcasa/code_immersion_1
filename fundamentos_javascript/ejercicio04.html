@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <!-- 
+            Desplegar una lista con productos: Manzana, Pera, Ajo en un HTML ul, li en un div id="resultado" al dar click en un boton "Ver lista"
+         -->
+         <button onclick="verLista()">Ver lista</button>
+         <div id="resultado"></div>
+         
+         <script>
+             const productos = ["Manzana","Pera","Ajo","Naranja","Frutilla"]
+             let resultado   = document.querySelector('#resultado')
+
+             const verLista = function (){
+                let li = ``
+
+                for(let i = 0; i < productos.length; i++){
+                    let producto = productos[i]
+                    li += `<li>${producto}</li>`
+                }
+
+                let ul = `<ul>${li}</ul>`
+
+                resultado.innerHTML = ul
+             }
+         </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <head></head>
+    <body>
+            <!-- 
+                Cambiar el texto de una etiqueta <p>Hola Mundo</p> por un texto "Buenas tardes". En tiempo de ejecución.
+                01. Manipulacion del DOM:  Cambiar el texto de una etiqueta
+                    - Como llevo el "p" para dentro del JS
+                    - Cuando tengo "p" como obtengo los elementos internos
+                    - Y como modifico
+                02. Cargo en una variable el texto "Buenas tardes" y luego asigno a la etiqueta "p"
+                03. En tiempo de ejecución: Es cuando cargo la pagina
+            -->
+            <p class="texto-bienvenida" id="holaMundo">Hola <b>Mundo</b></p>
+            <script>
+                let texto = "Buenas tardes"
+
+                // Para encontrar el "p" dentro del documento
+                // document.querySelector, document.querySelectorAll
+                // Selector
+                // -> etiqueta -> document.querySelector('p')
+                // -> clase    -> document.querySelector('.texto-bienvenida')
+                // -> id       -> document.querySelector('#holaMundo')
+                let p = document.querySelector('p')
+
+                // Obtengo la informacion de dos formas
+                // texto
+                console.log("Texto: ", p.innerText) // p.innerText = texto
+                // HTML
+                // HTML interno
+                console.log("Html interno: ", p.innerHTML) // p.innerHTML = '<b>Hola</b>'
+
+                // Todo el HTML
+                console.log("Html total: ", p.outerHTML) // p.outerHTML = '<p>Hola</p>'
+
+                p.innerText = texto
+                 
+                console.log("p: ", p)
+            </script>
+    </body>
+</html>

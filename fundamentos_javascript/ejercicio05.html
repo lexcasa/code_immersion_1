@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <!-- Dar click en un ítem de la lista de productos y obtener el nombre en un div con id="resultado" -->
+        <ul></ul>
+        <div id="resultado"></div>
+        <script>
+            const productos = ["Manzana","Pera","Ajo"]
+            let ul = document.querySelector('ul')
+            let resultado = document.querySelector('#resultado')
+
+            let li = ``
+            
+            const muestraTexto = function (texto){
+                console.log("texto: ", texto)
+                resultado.innerText = texto
+            }
+
+            for(let i = 0; i < productos.length; i++){
+                let producto = productos[i]
+                li += `
+                    <li onclick="muestraTexto('${producto}')">${producto}</li>
+                `
+            }
+            ul.innerHTML = li
+        </script>
+    </body>
+</html>
