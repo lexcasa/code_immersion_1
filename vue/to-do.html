@@ -19,7 +19,7 @@
         <hr>
         <ul>
             <li v-for="(item, i) in lista">
-                <span v-bind:class="{tachado: item.checked}">{{item.item}}</span>
+                <span v-bind:style="item.checked ? 'text-decoration: line-through' : ''">{{item.item}}</span>
                 <button v-on:click="completar(i)" v-bind:disabled="item.checked">Completar</button>
                 <button v-on:click="eliminar(i)" v-bind:disabled="item.checked">Eliminar</button>
             </li>
