@@ -1,0 +1,45 @@
+- Servidor web
+    - XAMP, WAMP, etc
+    - http-server
+        - Instalar nodejs
+        - powershell: 
+            - Revisamos que node esté instalado: 
+                node -v
+                npm -v (Gestor de paquetes de node)
+        - npm i -g http-server 
+            - http server de forma global
+            - Ejecuto: http-server -p 8080 -c-1
+                -> http-server : programa 
+                -> -p : puerto
+                -> -c : cache (-c-1 significa sin cache)
+
+- SETUP EN VUE
+    -> Incluir la CDN de vue en el head
+    -> Creamos la instancia de vue: new Vue({...})
+
+        -> Propiedad: "el" que se encarga de agarrar el nodo de HTML y soportar la app de vue
+        -> Propiedad: "data" que se encarga de todo el model de nuestra app
+
+    -> Ciclo del VUE
+        -> JS ----> {Data binding, directivas} ---> HTML
+                {{variable}}, v-for, v-if, v-bind 
+        -> JS <---- {v-model, v-on:evento, @evento} <--- HTML
+    
+    PROBLEMA: 
+        - Tengo un input le agrego texto
+        - Doy clic en agregar 
+        - Y que aparezca en consola el texto del input
+        - Agregar el texto a una lista y que la muestre en el v-for
+    
+    TO-DO LIST
+        - Input de texto
+        - Boton agregar
+            -> Cada texto en el input al dar clic en agregar se agrega a una lista
+        - LISTA
+            - item y dos funcionalidades
+                - Completar
+                    -> Al elemento de la lista lo tacho
+                    -> Y no se puede eliminar
+                - Eliminar
+                    -> Quito el elemento de la lista
+    
