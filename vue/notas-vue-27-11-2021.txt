@@ -1,0 +1,104 @@
+- CRUD
+    -> Create, Read, Update, Delete
+    -> Sobre un modelo de datos
+        -> Productos
+            -> Utilizar una base de datos NOSQL
+                -> Almacena documentos JSON
+                    -> Producto: {"nombre":"Manzana", "precio":20}
+        ---
+    -
+        Aplicacion de FrontEnd
+            -> Comunicar el FRONT con una API
+
+        Arq. de sistemas: 
+            -> [ Base de datos ] <-- Stream de conexion --> [API] <--HTTP/S--> [Cliente: WebApp]
+
+            API: Application programming interface
+                -> Std de datos tipo JSON
+                -> Std de datos XML
+            
+            [ NodeJS: API ] <-- HTTP/S (Std: JSON) ---> [Vue: Front]
+
+            Abs. de comunicacion HTTP
+                -> Verbos HTTP
+                    -> GET, PUT, POST, DELETE 
+                
+            Entrar a Facebook.com
+                -> HTTP GET facebook.com
+                    -> Resuelve la peticion
+                        -> Nos devuelve un documento HTML
+
+            Obtener listado de productos
+                -> HTTP GET api.com/productos
+                    -> Resuelve la peticion
+                        -> devuelve un documento JSON
+                            -> Parseo de JSON por un cliente en el Front
+                                -> Lo almaceno en una variable
+
+            Obs: Toda op. CRUD esta asociada a un verbo de HTTP
+
+                -> Create : POST
+                -> Read   : GET
+                -> Update : PUT
+                    -> Update total     : PUT
+                    -> Update parcial   : PATCH
+                -> Delete : DELETE
+
+            API REST
+                Obtener productos:
+                    - Estado
+                        -> Ruta : api.com/productos
+                        -> Op   : Read
+                        -> Verbo: GET 
+                        -> Response:
+                            -> Documento JSON
+                        -> Request
+                            -> Payload: N/A
+                
+                Crear un producto
+                    - Estado
+                        -> Ruta : api.com/productos/nuevo
+                        -> Op   : Create
+                        -> Verbo: POST
+                        -> Response
+                            -> Documento JSON
+                        -> Request
+                            -> Payload: {"nombre": "Manzana", "precio": 10}
+                
+                Actualizar un producto
+                    - Estado
+                        -> Ruta : api.com/productos/:id
+                        -> Op   : Update
+                        -> Verbo: PUT
+                        -> Response
+                            -> Documento JSON
+                        -> Request
+                            -> Payload: {"nombre": "Manzana", "precio": 10}
+                
+                Eliminar un producto
+                    - Estado
+                        -> Ruta : api.com/productos/:id
+                        -> Op   : Delete
+                        -> Verbo: DELETE
+                        -> Response
+                            -> Documento JSON
+                        -> 
+                            Payload: Opcional
+
+WEBAPP CRUD
+    -> Modelo: Producto
+    -> Producto: {
+        nombre: String,
+        precio: Float,
+        activo: Boolean
+    }
+
+    -> Listado de productos
+        -> Tabla de productos
+            -> Editar
+            -> Eliminar
+    -> Crear producto
+        -> Formulario con los campos del producto
+    -> Editar producto 
+        -> Utilizamos el mismo formulario del crear
+                 
