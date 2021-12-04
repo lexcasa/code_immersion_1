@@ -1,0 +1,33 @@
+- CRUD
+    - Seleccionar el producto
+        -> Agarro el producto de la lista 
+        -> Cargo en el formulario
+            -> Obtener el producto que viene de la lista
+            -> Obtener el producto por ID
+    - Operacion: Update
+        -> PUT /productos/:id
+        -> Body
+            {"nomnbre":"Manzana","precio":10,"activo":true}
+
+    MVC -> Model view controller
+
+    [Model] <----> [Controller] <---> [View]
+
+
+    [ API: Obj JavaScript] ----> HTTP JSON ----> [WebApp Axios: Obj JavaScript]
+
+    Nombre de una persona:
+    JSON
+        {"nombre":"Alex"} -- PARSER --> let persona = {nombre: "Alex"}
+    
+    XML
+        <xml>
+            <Persona>
+                <Nombre>Alex</Nombre>
+            </Persona>
+        </xml>
+
+        ---> let persona = {nombre: "Alex"}
+
+    // Servicio -> Factory
+        Factory function ( callback ( objeto ))
