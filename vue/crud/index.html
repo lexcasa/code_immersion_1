@@ -16,57 +16,11 @@
 </head>
 <body>
     <div id="app">
-        <div class="container top-margin-01">
-            <div>
-                <button class="btn btn-primary" v-on:click="listarProductos(false)">Listar</button>
-                <button class="btn btn-primary" v-on:click="listarProductos(true)">Listado Activos</button>
-                <button class="btn btn-primary" v-on:click="showForm()">+ Producto</button>
-            </div>
-            <div id="crud--formulario" class="row top-margin-01" v-if="isForm">
-                <form action="" class="col-4">
-                    <input type="text" v-model="producto.nombre" class="form-control" placeholder="Nombre">
-                    <br>
-                    <input type="number" v-model="producto.precio" class="form-control" placeholder="Precio">
-                    <br>
-                    <label for="">Activo</label>
-                    <input type="checkbox" v-model="producto.activo">
-                    <hr>
-                    <div class="alert alert-success" v-if="isSuccess">
-                        Guardado correctamente
-                    </div>
-                    <button type="button" class="btn btn-success" v-on:click="guardaProducto()" v-bind:disabled="isLoading">
-                        {{isLoading ? 'Guardando' : 'Guardar'}}
-                    </button>
-                </form>
-            </div>
-            <div id="crud--productos" v-if="!isForm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Activo</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="producto in productos">
-                            <td>{{producto._id}}</td>
-                            <td>{{producto.nombre}}</td>
-                            <td>{{producto.precio}}</td>
-                            <td>{{producto.activo ? 'SI' : 'NO'}}</td>
-                            <td>
-                                <button class="btn btn-primary" v-on:click="seleccionarProducto(producto._id)">Seleccionar</button>
-                                <button class="btn btn-danger" v-on:click="eliminarProducto(producto._id)">Eliminar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <producto-crud></producto-crud>
     </div>
     <script src="producto.service.js"></script>
+    <!-- Componente de CRUD de Producto -->
+    <script src="components/producto/producto.component.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
