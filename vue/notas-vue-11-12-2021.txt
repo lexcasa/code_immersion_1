@@ -1,0 +1,55 @@
+- Veniamos viendo las operaciones CRUD
+    -> Un componente de Producto
+        -> Listado
+        -> Formulario
+
+- Como integro este componente a una app que tiene estados?
+-> App de tipo SPA
+    -> Single page application
+        -> La application no recarga (window load)
+        -> Tiene estados
+            -> URL, Componente
+
+    CRUD:
+        Estado: Productos
+            -> /productos
+            -> Componente: 
+                -> Listado de productos
+
+        Estado: Productos Upsert
+            -> /productos/new
+                -> Componente:
+                    -> Formulario de producto
+            -> /productos/:id
+                -> Componente:
+                    -> Formulario de producto
+
+                -> Hago un GET by ID
+                -> Cargo el formulario
+            
+
+        -> app
+            -> app.js
+            -> index.html
+            -> components
+                -> productos
+                    -> indexView.html (listado)
+                    -> productos.component.js 
+
+                    -> formView.html (formulario)
+                    -> producto.form.component.js
+
+                    -> productos.service.js (servicio de productos)
+                ---
+                -> clientes
+                    ...
+                -> proveedores
+                    ...
+        VueRouter
+            -> Componente / path
+
+
+        -> Quiero entrar al login
+            -> localhost:8080/login
+                -> Formulario
+                -> Rel: (path, formulario) -> VueRouter

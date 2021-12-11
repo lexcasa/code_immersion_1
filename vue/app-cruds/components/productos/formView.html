@@ -1,0 +1,20 @@
+<div class="container top-margin-01" id="crud--formulario">
+    <menu-prods v-bind:arr-links="menuItems"></menu-prods>
+    <div class="row top-margin-01">
+        <form action="" class="col-4">
+            <input type="text" v-model="producto.nombre" class="form-control" placeholder="Nombre">
+            <br>
+            <input type="number" v-model="producto.precio" class="form-control" placeholder="Precio">
+            <br>
+            <label for="">Activo</label>
+            <input type="checkbox" v-model="producto.activo">
+            <hr>
+            <div class="alert alert-success" v-if="isSuccess">
+                Guardado correctamente
+            </div>
+            <button type="button" class="btn btn-success" v-on:click="guardaProducto()" v-bind:disabled="isLoading">
+                {{isLoading ? 'Guardando' : 'Guardar'}}
+            </button>
+        </form>
+    </div>
+</div>

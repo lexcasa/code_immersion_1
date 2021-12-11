@@ -1,0 +1,29 @@
+<div class="container top-margin-01" id="producto--crud">
+    <menu-prods v-bind:arr-links="menuItems"></menu-prods> 
+    <div id="crud--productos">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="producto in productos">
+                    <td>{{producto._id}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.activo ? 'SI' : 'NO'}}</td>
+                    <td>
+                        <router-link class="btn btn-primary" v-bind:to="'/productos/' + producto._id">Editar</router-link> 
+                        <!-- v-bind:to="'/productos/' + producto._id" -> to="/productos/61b4ab3497069d03e8491cc5" -> href="#/productos/61b4ab3497069d03e8491cc5" -->
+                        <button class="btn btn-danger" v-on:click="eliminarProducto(producto._id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
