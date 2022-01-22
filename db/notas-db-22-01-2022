@@ -1,0 +1,192 @@
+BASE DE DATOS
+
+    - SQL
+    - NoSQL
+
+    
+    -> SQL + NoSQL 
+
+    DIFF. PRINCIPAL ENTRE SQL vs NoSQL
+
+    -> SQL: Tablas y columnas que relacionan por indices (no siempre)
+    -> NoSQL: No pertenecen al set de datos anterior - Ejemplo: JSON (MongoDB)
+
+    
+    -> SQL: MYSQL
+        -> Phpmyadmin: Gestor de base de datos
+
+            -> XAMPP 
+            -> WAMPP
+        
+        -> Dbeaver
+        -> adminer
+
+    Modelo de datos: 
+
+        -> Abstraer un problema de la realidad soporte logico de datos (SQL)
+        -> SQL: Filas y columnas -> Tabla
+
+        -> Tabla: Nombre del modelo
+        -> Columnas: Van a ser las propiedades del modeo
+        -> Filas: Datos del modelo
+
+    Base de datos es el conjunto de modelo de datos de un problema
+
+        -> Base de datos es un conjunto de tablas que tienen filas y columnas
+
+    PROBLEMA: Tienda de zapatos
+
+        -> Vendo Zapatos
+        -> Tengo clientes
+        -> Quiero saber cuanto vendo por mes
+
+    Problema central: Producto y Cliente
+
+        Problema -> Entidades -> Modelo de datos
+
+        1. Problema: Lo que pasa en la realidad y quiero resolver con una base de datos
+        2. Entidades: Abs. de los actores del problema (Producto, Cliente)
+        3. Modelo de datos: 
+            -> Entidades
+            -> Relaciones
+                -> Compra del producto
+        
+    
+    DOS TIPOS DE PROBLEMAS:
+
+        -> Problemas que se resuelven estrictamente con la existencia de una base de datos
+        -> Problemas donde la base de datos es un auxiliar de la solucion
+
+    DEF. MIN. BASE DE DATOS
+
+        -> Almacenar/modificar informacion
+        -> Persistir en el tiempo
+        -> Recuperar informacion a demanda
+
+    ENTIDADES: 
+
+        -> Producto, Cliente
+        -> Producto !== Cliente
+        
+        Producto: (id, precio, nombre, cantidad, sku, categoria)
+        Cliente: (id, nombre, email)
+
+        Producto === Cliente -> NO
+
+        EJERCICIO: 
+
+            -> Cliente !== Proveedor con tres campos
+            -> Cliente: (id, nombre, email, apellido, ...)
+            -> Proveedor: (id, nombre, rut, ....)
+
+                Cliente[2] !== Proveedor[2] -> Cliente !== Proveedor
+
+            Cliente Intersect Proveedor -> (id, nombre) -> (email) (rut)
+                                        -> (id, nombre, tipo)
+
+        Con el caso anterior: EVITANDO REDUNDANCIA
+
+        CONCEPTOS: 
+
+            -> Modelado de la realidad
+            -> Fundamentos de datos
+            -> Fundamentos de estructura
+
+        RELACIONES
+
+            Cliente -> [Compra] -> Producto
+
+            Simular una compra: 
+
+                1. Viene el cliente a la tienda -> Registro del cliente
+                2. Elige una cantidad de un producto
+                3. Paga el precio * cantidad
+                4. Se lleva el producto
+
+            1. Cliente: (1, Alex, lexcasa@gmail.com)
+            2. 
+                Creo el Producto: (1, 150, Zapato 1, 10, 123123, Zapatos)
+
+                Cliente, Producto, Cantidad, total
+            3.   -> Compra: (Alex, Zapato 1, 2, 300)
+
+            4. Operacion que afecta a Producto
+                -> Restar la cantidad que se llevo el cliente Alex
+                -> Producto: (1, 150, Zapato 1, 10 --> 8, 123123, Zapatos)
+            
+            Relacion: 
+                Compra (Cliente, Producto, Cantidad, Total)
+                Compra: (idCliente, idProducto, Cantidad, Total)
+                -> (1, 1, 2, 300)
+
+    MODELO COMPLETO: 
+
+        -> Producto: (id, precio, nombre, cantidad, sku, categoria)
+        -> Cliente: (id, nombre, email)
+        -> Compra: (idCliente, idProducto, Cantidad, Total)
+
+    FUND. DATOS
+        -> Operaciones CRUD
+
+            -> Create -> INSERT
+            -> Read   -> SELECT
+            -> Update -> UPDATE
+            -> Delete -> DELETE
+
+        Verbos de SQL -> Construccion de los verbos, acciones con el modelo de datos se refiere a la QUERY
+        
+
+        EJEMPLO: Una columna de compra (1, 1, 2, 300)
+
+        -> Quiero obtener el resultado de todas las compras
+        -> Query: SELECT * FROM Compra
+
+            -> Verbo: SELECT
+            -> Propiedades: * -> Todas las propiedades de la tabla
+            -> Accion: FROM
+            -> Modelo: Compra
+
+            Tenemos una forma de obtener las propiedades individualmente
+
+            SELECT p1, ... , pn FROM nombre_tabla [LOGICA]
+
+        -> Si quiero obtener todas las compras mayor a 300 pesos tengo que extender la logica
+        de la query
+
+            -> COND LOGICA: WHERE
+
+            Query: SELECT * FROM Compra 
+                   WHERE Total > 300
+
+                   Resultado: -> ()
+            
+            Query (Q#2): SELECT * FROM Compra 
+                   WHERE Total <= 300
+
+                    Resultado: -> (1, 1, 2, 300)
+        
+        -> Quiero registrar una compra
+        -> Operacion create -> INSERT 
+
+            Accion: Alex compra 1 zapato #1 de la tienda
+            Query: INSERT INTO Compra (p1, ..., pn) VALUES (1, 1, 1, 150);
+            -> Verbo: INSERT 
+            -> Accion: INTO, VALUES
+            -> Modelo: Compra
+
+        -> Si quiero recuperar los datos con Q#2 
+        
+            -> (1, 1, 2, 300)
+               (1, 1, 1, 150)
+    
+
+                                
+
+        
+
+
+        
+
+
+
+
