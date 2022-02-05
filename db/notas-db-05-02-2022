@@ -1,0 +1,223 @@
+    UPDATE
+
+        -> UPDATE Compra SET p1 = v1 [LOGICA]
+
+        EJEMPLO: Quiero actualizar el nombre de un usuario a "Alex" al que tenga ID: 1
+
+        -> Tabla usuario: (id, nombre, email)
+
+        (1, "Juan", "juan@gmail.com")
+        (2, "Rodri", "rodrigo@gmail.com")
+        ...
+
+
+        Query: 
+
+        UPDATE usuario SET nombre = "Alex"
+
+        -> Resultado de mis registros: 
+
+        (1, "Alex", "juan@gmail.com")
+        (2, "Alex", "rodrigo@gmail.com")
+
+        UPDATE usuario SET nombre = "Alex"
+        WHERE id = 1
+
+        -> Resultado de la operacion:
+
+        (1, "Alex", "juan@gmail.com")
+        (2, "Rodri", "rodrigo@gmail.com")
+
+        -> Verbo: Update
+        -> Accion: Set [property = value]
+        -> Logica: Where [conditional chain]
+
+
+    DELETE
+
+        DELETE FROM table; 
+
+        -> Vaciar la tabla de todos sus registros
+
+        DELETE FROM table [Logica]
+
+
+        EJEMPLO: Quiero eliminar el primer registro de la tabla usuario
+
+            -> DELETE FROM usuario WHERE id = 1
+    --- 
+
+    Estructura: 
+
+        -> Crear una tabla
+            -> Claves primarias (PK)
+            -> Claves foreaneas (FK)
+            -> Tipo de datos
+        
+        -> Escuela de crecimiento de datos
+        -> Escuela de irreductibilidad
+
+        Tabla: usuarios
+            -> (id, nombre, email, idRol)
+        
+        PK: id
+            -> unico y representativo
+            -> unico: los numeros del id no se pueden repetir
+                    -> Secuencia logica incremental de 1 en 1 en el momento de crear un registro nuevo
+                        -> Auto incremento
+        --- 
+
+        FK: idRol
+            -> Reconstruir un modelo de datos completo con la menor cantidad de informacion de su dependencia
+
+        Usuario: 
+
+        (1, "Alex", "lexcasa@gmail.com", 1)
+
+        Rol: 
+        (1, "Admin")
+        (2, "Developer")
+
+
+        Usuario Full
+
+        (1, "Alex", "lexcasa@gmail.com", "Admin")
+
+        Usuario y Rol al cruzarce llegan a Usuario Full
+        Se curzan a traves de las FK
+        JOIN
+
+        SELECT * FROM usuario
+        JOIN Rol ON usuario.idRol = Rol.id
+
+        (1, "Alex", "lexcasa@gmail.com", 1, "Admin")
+        (2, "Rodri", "rodri@gmail.com", 2, "Developer")
+
+
+        SELECT * FROM usuario
+        JOIN Rol ON usuario.idRol = Rol.id
+        WHERE Rol.nombre = "Admin"
+
+        SELECT * FROM usuario
+        WHERE idRol = 1
+
+        Crear una tabla: 
+
+        CREATE TABLE usuario (
+            id INT NOT NULL,
+            nombre TEXT,
+            email TEXT 
+            PRIMARY KEY (id),
+            FOREIGN KEY (idRol) REFERENCES rol(id)
+        )
+
+        CREATE TABLE rol (
+            id INT NOT NULL,
+            nombre TEXT,
+            PRIMARY KEY (id)
+        )
+
+        CREATE TABLE usuario (
+            id INT NOT NULL,
+            nombre TEXT,
+            email TEXT 
+            PRIMARY KEY (id),
+            CONSTRAIN FK_rolUsuario FOREIGN KEY (idRol) REFERENCES rol(id)
+        )
+
+    TABLES: 
+
+        CREATE TABLE roles (
+            id INT NOT NULL AUTO_INCREMENT,
+            nombre TEXT,
+            PRIMARY KEY(id)
+        );
+
+        CREATE TABLE usuarios (
+            id INT NOT NULL AUTO_INCREMENT,
+            nombre TEXT,
+            email TEXT,
+            idRol INT,
+            PRIMARY KEY (id),
+            CONSTRAINT FK_usuarioRole FOREIGN KEY (idRol) REFERENCES roles(id)
+        );
+
+    JOIN Con aliases
+
+    SELECT
+        usuarios.id,
+        usuarios.nombre,
+        usuarios.email,
+        roles.nombre AS rol
+    FROM usuarios
+    JOIN roles ON usuarios.idRol = roles.id
+
+    Filtrando por HAVING
+
+    SELECT
+        usuarios.id,
+        usuarios.nombre,
+        usuarios.email,
+        roles.nombre AS rol
+    FROM usuarios
+    JOIN roles ON usuarios.idRol = roles.id
+    WHERE [logica]
+    HAVING (rol = "Admin")
+
+
+EJERCICIO 1
+Resolver un modelo de datos para lo siguiente:
+    - El objetivo del sistema es que los modelos de los diferentes autos siempre tengan repuestos.
+
+1. Identificar las entidades
+
+    -> Marcas: (id, nombre)
+    -> Componentes: (id, componente, idModelo)
+    -> Modelos: (id, modelo, idMarca)
+    -> Autos: (id, matricula)
+        -> Dependencia (Marcas)
+
+2. Identificar las relaciones
+
+    -> Stock
+        -> (id, idAuto, idComponente, cantidad)
+
+        (matricula, marca, modelo, componente, cantidad)
+
+    CREATE TABLE Marcas (
+        id INT NOT NULL AUTO_INCREMENT,
+        nombre TEXT,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE Modelos (
+        id INT NOT NULL AUTO_INCREMENT,
+        modelo TEXT,
+        idMarca INT,
+        PRIMARY KEY (id),
+        CONSTRAINT FK_MarcaModelo FOREIGN KEY (idMarca) REFERENCES Marcas(id)
+    );
+
+    CREATE TABLE Componentes (
+        id INT NOT NULL AUTO_INCREMENT,
+        componente TEXT,
+        idModelo INT,
+        PRIMARY KEY (id),
+        CONSTRAINT FK_ComponenteModelo FOREIGN KEY(idModelo) REFERENCES Modelos(id)
+    );
+
+    CREATE TABLE Autos (
+        id INT NOT NULL AUTO_INCREMENT,
+        matricula TEXT,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE Stock (
+        id INT NOT NULL AUTO_INCREMENT,
+        idAuto INT,
+        idComponente INT,
+        Cantidad FLOAT,
+        PRIMARY KEY (id),
+        CONSTRAINT FK_StockAuto FOREIGN KEY (idAuto) REFERENCES Autos(id),
+        CONSTRAINT FK_StockComponente FOREIGN KEY (idComponente) REFERENCES Componentes(id)
+    );
