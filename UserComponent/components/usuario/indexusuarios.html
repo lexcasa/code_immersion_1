@@ -1,0 +1,88 @@
+<div class="container top-margin-01"  id="usuario--crud">
+    <div>
+        <button class="btn btn-primary" v-on:click="listarUsuarios(false)">Listar</button>
+        <button class="btn btn-primary" v-on:click="listarUsuarios(true)">Listado Activos</button>
+        <button class="btn btn-primary" v-on:click="showForm()">+ Usuarios</button>
+    </div>
+    <div id="crud--formulario" class="row top-margin-01" v-if="isForm">
+        <form action="" class="col-4">
+            <label for="fname">Nombre:</label><br>
+            <input type="text" v-model="usuario.nombre" class="form-control" placeholder="Nombre">
+            <br>
+            <label for="lname">Apellido:</label><br>
+            <input type="text" v-model="usuario.apellido" class="form-control" placeholder="Apellido">
+            <br>
+            <label for="lname">e-mail:</label><br>
+            <input type="email" v-model="usuario.email" class="form-control" placeholder="email">
+            <br>
+            <label for="lname">Clave:</label><br>
+            <input type="password" v-model="usuario.password" class="form-control" placeholder="password">
+            <br>
+            <label for="lname">Género:</label>
+            <br>
+            <label for="lname">Masculino:</label>
+            <input type="checkbox" v-model="usuario.masculino">
+            <label for="lname">Femenino:</label>
+            <input type="checkbox" v-model="usuario.femenino">
+            <br>
+            <br>
+            <label for="lname">Edad:</label><br>
+            <input type="number" v-model="usuario.edad" class="form-control" placeholder="edad">
+            <br>
+            <label for="lname">Altura:</label><br>
+            <input type="altura" v-model="usuario.altura" class="form-control" placeholder="altura">
+            <br>
+            <label for="lname">Peso:</label><br>
+            <input type="peso" v-model="usuario.peso" class="form-control" placeholder="peso">
+            <br>
+            <label for="lname">Estado:</label>
+            <input type="checkbox" v-model="usuario.activo">
+            <hr>
+            <div class="alert alert-success" v-if="isSuccess">
+                Guardado correctamente
+            </div>
+            <button type="button" class="btn btn-success" v-on:click="guardaUsuario()" v-bind:disabled="isLoading">
+                {{isLoading ? 'Guardando' : 'Guardar'}}
+            </button>
+        </form>
+    </div>
+    <div id="crud--usuarios" v-if="!isForm">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>email</th>
+                    <th>Clave</th>
+                    <th>Masculino</th>
+                    <th>Femenino</th>
+                    <th>Edad</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="usuario in usuarios">
+                    <td>{{usuario._id}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.password}}</td>
+                    <td>{{usuario.masculino ? 'SI' : 'NO'}}</td>
+                    <td>{{usuario.femenino ? 'SI' : 'NO'}}</td>
+                    <td>{{usuario.edad}}</td>
+                    <td>{{usuario.altura}}</td>
+                    <td>{{usuario.peso}}</td>
+                    <td>{{usuario.activo ? 'SI' : 'NO'}}</td>
+                    <td>
+                        <button class="btn btn-primary" v-on:click="seleccionarUsuario(usuario._id)">Seleccionar</button>
+                        <button class="btn btn-danger" v-on:click="eliminarUsuario(usuario._id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
