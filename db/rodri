@@ -1,9 +1,0 @@
-Tablas: 
-
-id Servicio
-id Periodo Anio
-id Duracion
-id Dificultad
-
-Relación: 
-id idServicio idPeriodo idDuracion id Dificultad Create_at Update_at

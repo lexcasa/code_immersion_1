@@ -13,7 +13,8 @@ const CompUsuario = Vue.component('usuario-crud', function (cb){
                         edad: 0,
                         altura: 0,
                         peso: 0,
-                        activo: true
+                        activo: true,
+                        create: new Date()
                     },
                     usuarios: [],
                     isForm: true,
@@ -35,7 +36,8 @@ const CompUsuario = Vue.component('usuario-crud', function (cb){
                         edad: 0,
                         altura: 0,
                         peso: 0,
-                        activo: true
+                        activo: true,
+                        create: new Date()
                     }
                 },
                 // t= i
@@ -55,7 +57,8 @@ const CompUsuario = Vue.component('usuario-crud', function (cb){
                             edad: 0,
                             altura: 0,
                             peso: 0,
-                            activo: true
+                            activo: true,
+                            create: new Date()
                         }
         
                         if(res.edited){

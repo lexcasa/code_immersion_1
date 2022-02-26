@@ -61,6 +61,7 @@
                     <th>Altura</th>
                     <th>Peso</th>
                     <th>Activo</th>
+                    <th>Create</th>
                     <th></th>
                 </tr>
             </thead>
@@ -77,6 +78,7 @@
                     <td>{{usuario.altura}}</td>
                     <td>{{usuario.peso}}</td>
                     <td>{{usuario.activo ? 'SI' : 'NO'}}</td>
+                    <td>{{usuario.create}}</td>
                     <td>
                         <button class="btn btn-primary" v-on:click="seleccionarUsuario(usuario._id)">Seleccionar</button>
                         <button class="btn btn-danger" v-on:click="eliminarUsuario(usuario._id)">Eliminar</button>
