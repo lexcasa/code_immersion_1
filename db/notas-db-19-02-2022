@@ -1,0 +1,187 @@
+EJERCICIO 2: 
+
+Dada la realidad de un negocio minorista de calzados, es necesario potenciar las ventas en un determinado período de tiempo: Diciembre, Enero. Los productos están divididos en: Zapatos, Championes, Sandalias, Etc. Y cada tipo de producto con su respectiva marca: Nike, Rebook, etc.
+
+1. Entidades
+2. Relaciones
+
+    -> Entidades: Producto, Marca
+
+        Producto: (id, nombre)
+        -> Alternativa: Producto: (id, nombre, idMarca)
+        Marca: (id, nombre)
+        Periodo: (id, periodo, anio)
+
+    -> Relacion: 
+
+        -> Ventas:          (id, idProducto, idPeriodo, precio, cantidad, [fechaCreado, fechaEditado, fechaEliminado])
+        -> ProductoMarca:   (idProducto, idMarca) -> Esta tabla se va
+        -> ProductoPrecio:  (idProducto, precio, fecha)
+
+    REPORTE: 
+
+        Row: Champion Nike 1000 2 Diciembre 2021 
+            -> Columnas: (Producto: [Nombre, Marca], Trx: [Precio, Cantidad], Periodo: [Mes, Anio])
+            -> A partir de ventas
+    SCRIPT: 
+
+        CREATE TABLE Productos (
+            id INT NOT NULL AUTO_INCREMENT,
+            nombre TEXT,
+            PRIMARY KEY(id)
+        );
+
+        CREATE TABLE Marcas (
+            id INT NOT NULL AUTO_INCREMENT,
+            nombre TEXT,
+            PRIMARY KEY(id)
+        );
+
+        CREATE TABLE Periodos (
+            id INT NOT NULL AUTO_INCREMENT,
+            periodo TEXT,
+            anio INT,
+            PRIMARY KEY(id)
+        );
+
+        CREATE TABLE Ventas (
+            id INT NOT NULL AUTO_INCREMENT, 
+            idProducto INT NOT NULL, 
+            idPeriodo INT NOT NULL, 
+            precio FLOAT, 
+            cantidad INT,
+            PRIMARY KEY(id),
+            CONSTRAINT FK_Ventas_Producto FOREIGN KEY (idProducto) REFERENCES Productos(id),
+            CONSTRAINT FK_Ventas_Periodo FOREIGN KEY (idPeriodo) REFERENCES Periodos(id)
+        );
+
+        CREATE TABLE ProductoMarca (
+            id INT NOT NULL AUTO_INCREMENT,
+            idProducto INT NOT NULL, 
+            idMarca INT NOT NULL,
+            PRIMARY KEY(id),
+            CONSTRAINT FK_ProductoMarca_Producto FOREIGN KEY (idProducto) REFERENCES Productos(id),
+            CONSTRAINT FK_ProductoMarca_Marca FOREIGN KEY (idMarca) REFERENCES Marcas(id)
+        );
+
+        CREATE TABLE ProductoPrecio (
+            id INT NOT NULL AUTO_INCREMENT,
+            idProducto INT NOT NULL, 
+            precio INT NOT NULL,
+            fecha DATETIME NOT NULL,
+            PRIMARY KEY(id),
+            CONSTRAINT FK_ProductoPrecio_Producto FOREIGN KEY (idProducto) REFERENCES Productos(id)
+        );
+
+
+QUERY: 
+
+    Columnas: (Producto: [Nombre, Marca], Trx: [Precio, Cantidad], Periodo: [Mes, Anio])
+    Columnas: (idProducto (JOIN): [Nombre, Marca], Trx: [Precio, Cantidad], idPeriodo (JOIN): [Mes, Anio])
+
+    SELECT
+        productos.nombre AS Nombre,
+        marcas.nombre AS Marca,
+        ventas.precio AS Precio,
+        ventas.cantidad AS Cantidad,
+        periodos.periodo AS Mes,
+        periodos.anio AS Anio
+    FROM ventas
+    JOIN productos ON ventas.idProducto = productos.id
+    JOIN productomarca ON productomarca.idProducto = productos.id
+    JOIN marcas ON productomarca.idMarca = marcas.id
+    JOIN periodos  ON ventas.idPeriodo  = periodos.id
+
+
+    ventas -> productos -> productomarca -> marcas
+    Alternativa: ventas -> productos -> marcas
+    ventas -> periodos
+
+    Modelo alternativo: 
+
+    SELECT
+        productos.nombre AS Nombre,
+        marcas.nombre AS Marca,
+        ventas.precio AS Precio,
+        ventas.cantidad AS Cantidad,
+        periodos.periodo AS Mes,
+        periodos.anio AS Anio
+    FROM ventas
+    JOIN productos ON ventas.idProducto = productos.id
+    JOIN marcas    ON productos.idMarca = marcas.id
+    JOIN periodos  ON ventas.idPeriodo  = periodos.id
+
+EJERCICIO 3: Dada la realidad de una empresa de software, es necesario optimizar los procesos de cotización futuros (Julio, Agosto de 2022) con respecto a una base de conocimiento. Los productos/servicios están divididos en: Sistemas de gestión y Sistemas de logística. cada tipo de producto/servicio con su respectiva duración ( “Pequeño”, “Mediano” y “Largo Plazo”) y dificultad (“Experimental”, “Difícil”, “Estándar”, “Jr”)
+
+1. Entidades
+2. Relaciones
+
+ENTIDADES: 
+
+    -> ProductoServicios (id, nombre, idDuracion)
+    -> Periodos (id, periodo, anio)
+    -> Duracion (id, duracion)
+    -> Dificultad (id, dificultad)
+
+RELACIONES:
+    -> Ventas (id, idProductoServicio, idPeriodo, idDificultad)
+    Reporte: 
+        Row: Sistema de gestion Largo plazo Estandar Julio 2022
+        Columnas: (Producto: [Nombre, Duracion], Dificultad, Periodo: [Mes, Anio])
+
+    CREATE TABLE Duraciones (
+        id INT NOT NULL AUTO_INCREMENT, 
+        duracion TEXT, 
+        PRIMARY KEY(id)
+    );
+
+    CREATE TABLE Dificultades (
+        id INT NOT NULL AUTO_INCREMENT, 
+        dificultad TEXT, 
+        PRIMARY KEY(id)
+    );
+
+    CREATE TABLE Periodos (
+        id INT NOT NULL AUTO_INCREMENT, 
+        periodo TEXT,
+        anio INT, 
+        PRIMARY KEY(id)
+    );
+
+    CREATE TABLE ProductoServicios (
+        id INT NOT NULL AUTO_INCREMENT,
+        nombre TEXT,
+        idDuracion INT NOT NULL,
+        PRIMARY KEY (id),
+        CONSTRAINT FK_ProductoServicios_Duraciones FOREIGN KEY (idDuracion) REFERENCES Duraciones(id)
+    );
+
+
+    CREATE TABLE ventas (
+        id INT NOT NULL AUTO_INCREMENT,
+        idProductoServicio INT NOT NULL,
+        idPeriodo INT NOT NULL, 
+        idDificultad INT NOT NULL,
+        PRIMARY KEY (id),
+        CONSTRAINT FK_Ventas_ProductoServicios FOREIGN KEY (idProductoServicio) REFERENCES ProductoServicios(id),
+        CONSTRAINT FK_Ventas_Periodos FOREIGN KEY (idPeriodo) REFERENCES Periodos(id),
+        CONSTRAINT FK_Ventas_Dificultades FOREIGN KEY (idDificultad) REFERENCES Dificultades(id)
+    );
+
+    (Producto: [Nombre, Duracion], Dificultad, Periodo: [Mes, Anio])
+
+    SELECT
+        productoservicios.nombre AS Nombre,
+        duraciones.duracion AS Duracion,
+        dificultades.dificultad AS Dificultad,
+        periodos.periodo AS Mes,
+        periodos.anio AS Anio
+    FROM ventas
+    JOIN productoservicios ON ventas.idProductoServicio = productoservicios.id
+    JOIN duraciones ON productoservicios.idDuracion = duraciones.id
+    JOIN dificultades ON ventas.idDificultad = dificultades.id
+    JOIN periodos ON ventas.idPeriodo = periodos.id
+
+    ventas -> productoservicios -> duraciones
+    ventas -> dificultades
+    ventas -> periodos
