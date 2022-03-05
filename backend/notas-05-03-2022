@@ -1,0 +1,146 @@
+API REST
+    -> Servicios orientados a estados
+
+[ Base de datos ] <----> [ API ] <----> [ Cliente ]
+
+    PROBLEMA: 
+        -> Exponer los productos de mi tienda para tres aplicaciones
+            -> Web en PHP (WordPress)
+            -> App mobile iOS (Swift)
+            -> App mobile Android (Kotlin)
+
+    Productos (MYSQL): 
+        [
+            {nombre: "Manzana", precio: 123, ...},
+            ...
+        ]
+
+    OPCIONES: 
+
+        1. Hacer un SDK para c/tecnologia que voy a utilizar para mi tienda
+        2. API que se comunique con un std de datos
+
+    
+    SDK: 
+
+        $sdkTienda = new TiendaSDK();
+        $productos = $sdkTienda->allProducts();
+
+    API: 
+        -> std datos: JSON
+        -> Endpoint
+    
+    Std: JSON, XML
+
+
+[A -> converter ( Datos nativos de A ) ] <-- JSON ---> [ B, parser (JSON) ---> Datos nativos de B ]
+
+Transferencia de datos: HTTP - Protocolo
+    
+    HTTP
+        -> OPTIONS (Pre-fligth)
+        -> GET
+        -> POST 
+        -> PUT
+        -> PATCH
+        -> DELETE
+    
+    JSON? 
+
+    Producto: {"nombre": "Manzana", "precio": 123}
+
+    XML?
+
+    <Producto>
+        <Nombre>Manzana</Nombre>
+        <Precio>123</Precio>
+    </Producto>
+
+    JSON: Velocidad de parseo, Velocidad de transferencia por el peso del documento
+    XML: Enfocado a seguridad
+
+
+    // PHP: "\x660b" -> "?>" 
+
+
+    REST: Orientado a estados
+
+        -> Estado (url, verbo)
+            -> Funcionalidad
+        
+        Obtener todos los productos: 
+            -> Estado: (api.com/productos, GET)
+                -> Funcionalidad: Obtener todos los productos de la tabla productos
+                -> Request
+                    Params: ??
+                    Payload: null
+                -> Response
+                    -> Body: [{...}, ...]
+                    -> Status code: 2XX
+
+        Crear un producto:
+
+            -> Estado: (api.com/productos, POST)
+                -> Funcionalidad: Insertar producto/s de la tabla productos
+                -> Request
+                    Payload: 
+                        {...}
+                -> Response
+                    Success: 
+                        -> Body: { sucess: true }
+                        -> Status code: 200 
+                    --- 
+                    Error: 
+                        -> Body: {error: "Mensaje"}
+                        -> Status code: 404
+
+
+    EJEMPLO: 
+
+        GET api.com/productos -> No tiene productos
+            -> Response: 
+                -> Body: []
+                -> Status code: 404
+
+        GET api.com/123asdsafdqw -> Url no existe
+
+            -> Response: 
+                -> Body: ??
+                -> Status code: 404
+
+    SETUP: 
+
+        1. NodeJS
+        2. Instalar nodemon: npm i -g nodemon
+        3. Crear la carpeta del backend
+            -> npm init
+            -> Crear archivo: .gitignore
+                -> node_modules
+                -> package-lock.json
+
+        4. Intalar deps: 
+            npm i --save express body-parser cors mysql
+
+        5. Crear un archivo: app.js
+            -> Instanciar el setup de la app express
+
+        Obtener un producto por ID
+
+        Estado: (api.com/productos/:id, GET)
+            -> Funcionalidad: 
+                req.params
+                    {id: "valor"}
+
+            GET api.com/productos/123
+                req.params
+                    {id: "123"}
+
+    OBTENER TODOS LOS PRODUCTOS
+
+        Arq. de tres capas 
+            -> Model (Comunicacion entre la base de datos)
+            -> Service
+            -> View
+                -> api al frontend
+
+        Como utilizamos un modulo de un archivo productos.service.js en app.js
