@@ -7,7 +7,7 @@ const Productos = {
     },
     obtenerProductoPorId: async (arrProds, id) => {
         console.log(id)
-        const productos = await dbService.query('SELECT * FROM productos WHERE id = ?', [1])
+        const productos = await dbService.query('SELECT * FROM productos WHERE id = ?', [id])
         return productos.length > 0 ? productos[0] : undefined
     },
     crearProducto: async (producto) => {

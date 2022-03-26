@@ -1,0 +1,69 @@
+ROADMAP: 
+
+    - Desacoplar el ruteo con Router
+    - Autenticacion
+        -> tabla de usuario
+        -> Registro
+        -> login
+        -> header (volver a utilizar middleware)
+    - Middleware y funcion next()
+
+BASE_PATH
+    /productos
+        ROUTER (SUB_PATH)
+            GET /all
+
+
+    [ DB ] ---> [ Services ] ---> [ Routers ] --> [ View ] --> CLIENTE
+
+
+AUTH: 
+
+    -> Tabla de usuarios
+        -> Tipos 
+            -> Tres tablas
+                -> Usuario, Tipo, Tipo_Usuario
+                -> Usuario tipado
+        -> Roles
+            -> Usuarios, Perfiles, Permisos, Usuario_Perfiles, Perfiles_Permisos, Permisos_Rutas
+    
+    CREATE TABLE usuarios (
+        id int AUTO_INCREMENT NOT NULL,
+        nombre TEXT, 
+        email TEXT NOT NULL, 
+        clave TEXT NOT NULL,
+        isAdmin TINYINT DEFAULT 0,
+        dateCreate DATETIME NOT NULL DEFAULT NOW(),
+        dateEdited DATETIME NOT NULL DEFAULT NOW(),
+        active TINYINT DEFAULT 1,
+        PRIMARY KEY (id)
+    );
+
+    Crear 2 APIS 
+
+        - Registro de usuario
+        - Login
+
+    Registro de usuario: 
+
+        -> Claves -> Algoritmo de hash -> Clave hasheada 
+        -> Verificas si el usuario es valido por el hash
+
+        Clave: 1234 -> HASH #1 -> asd123asdd -- Si es igual al hash de la DB entonces OK
+
+    MD5 hash
+        -> Md5(1234) -> asdasd123asd
+        -> seed: al.123!#__hola
+        -> Md5( Clave + seed ) -> 0asnd123as99
+
+
+    PRODUCTOS
+        -> PUBLICA
+            -> Obtener productos (todos)
+            -> Productos por ID 
+
+        -> PRIVADA
+            -> Crear producto
+            -> Existe un TOKEN y es valido entonces deja seguir la peticion
+
+    

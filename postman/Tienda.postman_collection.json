@@ -1,0 +1,341 @@
+{
+	"id": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+	"name": "Tienda",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "Productos",
+			"description": "",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"order": [
+				"ec8f634c-c7ec-ba33-80ef-df2e64cdf5f2",
+				"2d26bf18-5261-adda-c06c-b56ec900aed4",
+				"f30d1504-15a6-c306-939a-9ed7f0783dba"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "2d3602aa-9af3-0677-22cc-18038d77bbd7"
+		},
+		{
+			"name": "Usuarios",
+			"description": "",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"order": [
+				"cefc5fd0-92cb-a431-e556-00bcf44e3963",
+				"9acd10f9-f53d-1902-cff9-4bbd8bc406f6"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "31200275-04df-cfb1-7bad-bc225c479277"
+		}
+	],
+	"folders_order": [
+		"2d3602aa-9af3-0677-22cc-18038d77bbd7",
+		"31200275-04df-cfb1-7bad-bc225c479277"
+	],
+	"timestamp": 1648299288253,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2d26bf18-5261-adda-c06c-b56ec900aed4",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/productos/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1648299646987,
+			"name": "Obtener producto por ID",
+			"description": "",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 56,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "40",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sat, 26 Mar 2022 12:55:50 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"28-TjjxDbF/s3AygPTSC1SoB879GCc\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"response\":{\"id\":1,\"nombre\":\"Zapatos\"}}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Success response",
+					"id": "b24c0b9b-cf84-1686-d365-9cba4e017275",
+					"request": {
+						"url": "http://localhost:3000/productos/1",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 252,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "34",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sat, 26 Mar 2022 13:00:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"22-DoT5ybwMKaDFCElYot58nmw2dVs\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"error\":\"Producto no encontrado\"}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Error response",
+					"id": "e8bcf0cc-f971-93ea-3fe3-1b97854e8887",
+					"request": {
+						"url": "http://localhost:3000/productos/10",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				}
+			]
+		},
+		{
+			"id": "9acd10f9-f53d-1902-cff9-4bbd8bc406f6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/usuarios/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Login de usuario",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1648304692550,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "31200275-04df-cfb1-7bad-bc225c479277",
+			"rawModeData": "{\n\t\"email\":\"alex@gmail.com\",\n\t\"clave\":\"1234\"\n}"
+		},
+		{
+			"id": "cefc5fd0-92cb-a431-e556-00bcf44e3963",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/usuarios/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1648302949493,
+			"name": "Registro de usuario",
+			"description": "",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"responses": [],
+			"rawModeData": "{\n\t\"nombre\":\"Alex\",\n\t\"email\":\"alex@gmail.com\",\n\t\"clave\":\"1234\"\n}"
+		},
+		{
+			"id": "ec8f634c-c7ec-ba33-80ef-df2e64cdf5f2",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/productos/all",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"data": null,
+			"dataMode": "params",
+			"name": "Obtener todos los productos",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1648299329170,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2d3602aa-9af3-0677-22cc-18038d77bbd7"
+		},
+		{
+			"id": "f30d1504-15a6-c306-939a-9ed7f0783dba",
+			"headers": "Content-Type: application/json\nAuthorization: 8EE8145B022F1DF62699D0CE5C70FBC0\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "8EE8145B022F1DF62699D0CE5C70FBC0",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/productos/new",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5a9684e2-8ce1-862b-25a7-6be36781d393",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Producto nuevo",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1648305816351,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2d3602aa-9af3-0677-22cc-18038d77bbd7",
+			"rawModeData": "{\n    \"nombre\": \"Alambre\"\n}"
+		}
+	]
+}

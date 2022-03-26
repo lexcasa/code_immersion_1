@@ -1,5 +1,9 @@
 const express       = require('express')
 const bodyParser    = require('body-parser')
+const cors          = require('cors')
+const Productos     = require('./routes/productos.router')
+const Usuarios      = require('./routes/usuarios.router')
+
 const app = express()
 const port = 3000
 
@@ -8,31 +12,14 @@ const port = 3000
 app.get('/', (req, res) => {
   res.send('Alex!')
 })
-
+app.use(cors())
 app.use(bodyParser.json())
-// Productos
-app.get('/productos', async (req, res) => {
-    const Productos = require('./services/productos.service')
-    const arrProds  = await Productos.obtenerTodos()
 
-    res.send({ response: arrProds })
-})
+// Ruteo de productos
+app.use('/productos', Productos)
 
-app.get('/productos/:id', async (req, res) => {
-    const id = req.params.id
-    const Productos = require('./services/productos.service')
-    const arrProds  = await Productos.obtenerTodos()
-    const producto  = await Productos.obtenerProductoPorId( arrProds, id)
-
-    res.send({ response: producto })
-})
-
-app.post('/productos', async (req, res) => {
-    const body = req.body
-    const Productos = require('./services/productos.service')
-    const response  = await Productos.crearProducto(body)
-    res.send({response: response})
-})
+// Ruteo de usuarios
+app.use('/usuarios', Usuarios)
 
 // Levanta un webserver
 app.listen(port, () => {
