@@ -4,7 +4,7 @@ const Usuario   = require('./usuarios.service')
 const Middleware = {
     verifyToken: async function (req, res, next){
         const auth = req.headers['authorization']
-        const isValidToken = await Usuario.validToken(auth, false, true)
+        const isValidToken = await Usuario.validToken(auth, false, false)
 
         if(isValidToken){
             next()
