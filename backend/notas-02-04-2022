@@ -1,0 +1,69 @@
+DEPLOY: Backend en DigitalOcean
+
+    PLAN:
+
+    TENEMOS DOMINIO: 
+
+        1. Crear un droplet en DO con sistema operativo Ubuntu
+        2. Instalar el stack LAMP con una guia de DigitalOcean
+        3. Instalar el PHPMYADMIN con una guia de DigitalOcean
+        4. Instalar el NVM
+        5. Instalar y configurar el pm2
+        6. Configuracion de subdominio a server
+        7. setup de backend
+        8. Configuracion de reverse proxy
+        9. Configuracion de SSL para subdominio con certbot
+
+
+- Creamos un usuario root del droplet
+
+    u: root
+    p: codeImmersion123!M
+
+
+- Entrar por ssh a la maquina virtual (droplet)
+
+    -> Windows: Ubuntu subsystem o putty
+    -> Mac: Por defecto la terminal
+    -> Linux: por defecto la terminal
+
+- Vamos a la terminal
+
+    -> ssh root@137.184.47.192
+
+Paso 1: 
+    https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-es
+
+Paso 2: 
+
+    Al terminar de configurar el PHPMYADMIN si da error 404
+    Entonces en el archivo de configuracion de apache (/etc/apache2/apache2.conf) 
+    agregamos al final del archivo la siguiente linea: /etc/phpmyadmin/apache.conf
+
+    - Reiniciamos el servicio
+    - Verificamos la ruta del PHPMYADMIN
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'codeImmersion123!M';
+    INSTALL COMPONENT "file://component_validate_password";
+
+    -> Crear un usuario que no sea root
+
+        -> CREATE USER 'reportes'@'localhost' IDENTIFIED WITH caching_sha2_password BY '4nuAAgHTcW2z3ymE!M';
+        -> GRANT SELECT ON test_tienda.* TO 'reportes'@'localhost' WITH GRANT OPTION;
+        -> FLUSH PRIVILEGES;
+
+    -> CREATE USER 'tienda'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    -> GRANT ALL PRIVILEGES ON *.* TO 'tienda'@'localhost' WITH GRANT OPTION;
+    -> FLUSH PRIVILEGES;
+
+
+PASO 8: 
+
+    https://www.digitalocean.com/community/tutorials/how-to-use-apache-as-a-reverse-proxy-with-mod_proxy-on-ubuntu-16-04
+
+
+
+    ProxyPreserveHost On
+
+    ProxyPass /api/ http://127.0.0.1:3000/
+    ProxyPassReverse /api/ http://127.0.0.1:3000/
